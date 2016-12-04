@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         switchingit = false;
         states.Add(new KeyValuePair<gamestate, gamestate>(gamestate.init, gamestate.p1active));
         states.Add(new KeyValuePair<gamestate, gamestate>(gamestate.p1active, gamestate.switching));
@@ -47,32 +46,44 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        switch (state)
+        switch (GameManager.Instance.state)
         {
-            case gamestate.init:
-                if (!switchingit)
-                StartCoroutine(Switchme());
+            case game.mainmenu:
                 break;
-            case gamestate.p1active:
-                if (Inputs.A_Button())
-                    Transition(gamestate.switching);
-                setP1Active();
+            case game.credits:
+                break;
+            case game.pause:
                 break;
 
-            case gamestate.p2active:
-                if (Inputs.A_Button())
-                    Transition(gamestate.switching);
-                setP2Active();
+
+            case game.game:
+                switch (state)
+                {
+                    case gamestate.init:
+                        if (!switchingit)
+                            StartCoroutine(Switchme());
+                        break;
+                    case gamestate.p1active:
+                        if (Inputs.A_Button())
+                            Transition(gamestate.switching);
+                        setP1Active();
+                        break;
+
+                    case gamestate.p2active:
+                        if (Inputs.A_Button())
+                            Transition(gamestate.switching);
+                        setP2Active();
+                        break;
+
+                    case gamestate.switching:
+                        if (!switchingit)
+                            StartCoroutine(Switchme());
+                        break;
+                }
                 break;
 
-            case gamestate.switching:
-                if (!switchingit)
-                    StartCoroutine(Switchme());
-                break;
+
         }
-
-
     }
 
 
