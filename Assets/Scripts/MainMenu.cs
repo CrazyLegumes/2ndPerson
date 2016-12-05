@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour {
     {
         MenuDisplay = GameObject.Find("MainMenu");
         ControlDisplay = GameObject.Find("Controls");
-
+        //yas
         ControlDisplay.SetActive(false);
     }
 	

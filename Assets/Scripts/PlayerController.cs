@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void Transition(gamestate newstate)
+    public void Transition(gamestate newstate)
     {
         if (states.Contains(new KeyValuePair<gamestate, gamestate>(state, newstate)))
         {

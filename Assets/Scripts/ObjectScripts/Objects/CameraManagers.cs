@@ -14,7 +14,7 @@ public class CameraManagers : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class CameraManagers : MonoBehaviour
 
     public IEnumerator CameraSwitch(Player target)
     {
-        
+
         ready = false;
         Vector3 leftbound = target.head.transform.position - new Vector3(.4f, .4f, .4f);
 
@@ -39,15 +39,17 @@ public class CameraManagers : MonoBehaviour
         while (!ready)
         {
             yield return null;
+            
             if ((transform.position.x >= leftbound.x && transform.position.y >= leftbound.y && transform.position.z >= leftbound.z)
                 && (transform.position.x <= rightbound.x && transform.position.y <= rightbound.y && transform.position.z <= rightbound.z) && transform.eulerAngles == target.head.transform.eulerAngles)
             {
                 ready = true;
                 yield break;
-            }       
+            }
         }
 
     }
+
 
     public void CameraMoveToPlayer1()
     {

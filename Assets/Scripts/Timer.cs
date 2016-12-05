@@ -16,7 +16,6 @@ public class Timer : MonoBehaviour {
         isPaused = false;
         level_time = 0;
         textDisplay = this.gameObject.GetComponentInChildren<Text>();
-        Debug.Log("Fix");
     }
 	
 	// Update is called once per frame
