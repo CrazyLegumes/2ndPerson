@@ -10,7 +10,7 @@ public class Menu : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        controller = GameObject.Find("PlayerManager").GetComponent<PlayerController>();
+
     }
 	
 	// Update is called once per frame
